@@ -1,0 +1,119 @@
+/* Write your CSS here */
+
+.product-details-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.product-image {
+  height: 240px;
+  border-radius: 10px;
+}
+
+.product-title {
+  color: #616e7c;
+  font-size: 18px;
+}
+
+.product-price {
+  color: #12022f;
+  font-size: 20px;
+}
+
+.rating-section {
+  background-color: #3b82f6;
+  height: 35px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  color: #ffffff;
+  margin-right: 15px;
+}
+
+.stars-image {
+  height: 23px;
+  margin-left: 5px;
+  margin-bottom: 2px;
+}
+
+.rating-number {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0px;
+}
+
+.product-description {
+  line-height: 1.5;
+  font-size: 13px;
+  color: #616e7c;
+}
+
+.product-availability {
+  color: #12022f;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.span-element {
+  font-size: 14px;
+  color: #616e7c;
+  font-weight: 400;
+}
+
+.line {
+  color: #616e7c;
+  width: 100%;
+}
+
+.minus-buttons {
+  border: none;
+  background-color: transparent;
+  margin-right: 25px;
+}
+
+.plus-buttons {
+  border: none;
+  background-color: transparent;
+  margin-left: 25px;
+}
+
+.quantity-section {
+  display: flex;
+  align-items: center;
+}
+
+.plus-minus-icons {
+  font-size: 18px;
+}
+
+.quality-number {
+  font-size: 18px;
+  color: #616e7c;
+}
+
+.add-to-cart-btn {
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  height: 40px;
+  width: 110px;
+  font-size: 12px;
+}
+
+.rating-reviews-section {
+  display: flex;
+  align-items: center;
+}
+
+.product-reviews {
+  font-size: 15px;
+  color: #1e293b;
+}
+
+.similar-product-image {
+  height: 180px;
+}
