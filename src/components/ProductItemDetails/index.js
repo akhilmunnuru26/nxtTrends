@@ -70,7 +70,6 @@ class ProductItemDetails extends Component {
         totalReviews: data.total_reviews,
       }
 
-      this.renderSimilarProducts(fetchedData.similarProducts)
 
       this.setState({productDetails: fetchedData})
     }
