@@ -28,60 +28,41 @@ class ProductItemDetails extends Component {
     }
   }
 
-  renderSimilarProducts = similarProducts => (
-    <ul>
-      {similarProducts.map(item => (
-        <SimilarProductItem key={item.id} similarProducts={item} />
-      ))}
-    </ul>
-  )
+  renderSimilarProductItem = () => {
+    const {productDetails} = this.state
+    const {similarProducts} = productDetails
+    const formattedSimilarProducts = similarProducts.map(eachItem => ({
+      availability: eachItem.availability,
+      brand: eachItem.brand,
+      description: eachItem.description,
+      id: eachItem.id,
+      imageUrl: eachItem.image_url,
+      price: eachItem.price,
+      rating: eachItem.rating,
+      style: eachItem.style,
+      title: eachItem.title,
+      totalReviews: eachItem.total_reviews,
+    }))
+    console.log(formattedSimilarProducts)
+    //
 
-  getProductItemDetails = async () => {
-    const {match} = this.props
-    const {params} = match
-    const {id} = params
-
-    const jwtToken = Cookies.get('jwt_token')
-
-    const productApiUrl = `https://apis.ccbp.in/products/${id}/`
-    const options = {
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-      method: 'GET',
-    }
-
-    const response = await fetch(productApiUrl, options)
-
-    if (response.ok) {
-      const data = await response.json()
-      // console.log(data)
-      const fetchedData = {
-        id: data.id,
-        imageUrl: data.image_url,
-        title: data.title,
-        style: data.style,
-        price: data.price,
-        availability: data.availability,
-        brand: data.brand,
-        description: data.description,
-        rating: data.rating,
-        similarProducts: data.similar_products,
-        totalReviews: data.total_reviews,
-      }
-
-
-      this.setState({productDetails: fetchedData})
-    }
+    return (
+      <div className="similar-product-card">
+        <h1 className="similar-product-heading">Similar Products</h1>
+        <ul className="similar-product-list-container">
+          {formattedSimilarProducts.map(item => (
+            <SimilarProductItem>{item}</SimilarProductItem>
+          ))}
+        </ul>
+      </div>
+    )
   }
 
   renderProductItemDetails = () => {
     const {productDetails} = this.state
     const {
-      id,
       imageUrl,
       title,
-      style,
       price,
       availability,
       brand,
@@ -139,9 +120,47 @@ class ProductItemDetails extends Component {
             ADD TO CART
           </button>
         </div>
-        {this.renderSimilarProducts()}
+        {this.renderSimilarProductItem()}
       </div>
     )
+  }
+
+  getProductItemDetails = async () => {
+    const {match} = this.props
+    const {params} = match
+    const {id} = params
+
+    const jwtToken = Cookies.get('jwt_token')
+
+    const productApiUrl = `https://apis.ccbp.in/products/${id}/`
+    const options = {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      method: 'GET',
+    }
+
+    const response = await fetch(productApiUrl, options)
+
+    if (response.ok) {
+      const data = await response.json()
+      // console.log(data)
+      const fetchedData = {
+        id: data.id,
+        imageUrl: data.image_url,
+        title: data.title,
+        style: data.style,
+        price: data.price,
+        availability: data.availability,
+        brand: data.brand,
+        description: data.description,
+        rating: data.rating,
+        similarProducts: data.similar_products,
+        totalReviews: data.total_reviews,
+      }
+
+      this.setState({productDetails: fetchedData})
+    }
   }
 
   render() {
